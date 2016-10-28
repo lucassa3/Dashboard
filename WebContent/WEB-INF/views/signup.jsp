@@ -29,7 +29,9 @@
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 	
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://code.jquery.com/jquery-3.1.1.min.js"
+			integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+			crossorigin="anonymous"></script>
 	
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
@@ -37,15 +39,28 @@
   	<!-- jQuery Form Mask Plug-in -->
   	<script src="js/jquery-mask.min.js"></script>
   	
-  	<!-- Form Masking -->
-  	<script src="js/signup-form-validation.js"></script>
-  	
-  	<script src="js/form-validation.js"></script>
-  	
+  	<!--  <script type="text/javascript">
+    	function readURL(input) {
+        	if (input.files && input.files[0]) {
+            	
+        		var reader = new FileReader();
+                
+                reader.onload = function (e) {
+              		$('#user-profile-img').attr('src', e.target.result);
+                }
+                
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    
+        $("#imgInp").change(function(){
+            readURL(this);
+        });
+    </script>-->
   
   </head>
   
-  <body style="overflow-y:hidden">
+  <body>
     
     <div class="container-fluid">
     	
@@ -101,39 +116,64 @@
     					
     						<div class="col-md-8">
 								
-								<form method="post" action="profile" method="post">
+								<form method="post" action="profile" id="signup-form" autocomplete="off">
 										
 									<!-- [START] First section: FirstName, LastName, Email, Password, ConfirmPassword -->
 									<div class="col-md-6">
 									
 										<div class="form-group">
-                                             
-                                			<input type="text" class="form-control" name="first-name" placeholder="Nome">
+										
+											<div class="input-group">
+												
+												<input aria-describedby="first-name-addon" class="form-control validation" name="first-name" placeholder="Nome" required type="text">
+												<span class="input-group-addon" id="first-name-addon"><i class="fa fa-circle-o"></i></span>
+												
+											</div>
                                 	
                                 		</div>
                                 
                                 		<div class="form-group">
+                                		
+                                			<div class="input-group">
                                              
-                                			<input type="text" class="form-control" name="last-name" placeholder="Sobrenome">
+                                				<input aria-describedby="last-name-addon" class="form-control validation" name="last-name" placeholder="Sobrenome" required type="text">
+                                				<span class="input-group-addon" id="last-name-addon"><i class="fa fa-circle-o"></i></span>
                                 	
+                                			</div>
+                                		
                                 		</div>
                                 
                                 		<div class="form-group">
+                                		
+                                			<div class="input-group">
                                                     
-                                			<input type="email" class="form-control" name="email" placeholder="Email">
+                                				<input aria-describedby="email-addon" class="form-control validation" name="email" placeholder="Email" required type="email">
+                                				<span class="input-group-addon" id="email-addon"><i class="fa fa-circle-o"></i></span>
                                 
+                                			</div>
+                                			
                                 		</div>
                                 
                                 		<div class="form-group">
+                                		
+                                			<div class="input-group">
                                 	
-                                			<input type="password" class="form-control" name="password" placeholder="Senha">
+                                				<input aria-describedby="password-addon" class="form-control" name="password" placeholder="Senha" required type="password">
+                                				<span class="input-group-addon" id="password-addon"><i class="fa fa-circle-o"></i></span>
                                 	
+                                			</div>
+                                		
                                 		</div>
                                 
                                 		<div class="form-group">
+                                		
+                                			<div class="input-group">
                                                 
-                         					<input type="password" class="form-control" name="password-validation" placeholder="Confirmar Senha">
+                         						<input aria-describedby="confirm-password-addon" class="form-control" name="confirm-password" placeholder="Confirmar Senha" required type="password">
+                                				<span class="input-group-addon" id="confirm-password-addon"><i class="fa fa-circle-o"></i></span>
                                 	
+                                			</div>
+                                		
                                 		</div>
                                 	
                                 	</div>
@@ -144,9 +184,9 @@
                                            	
 										<div class="form-group">
                                 		
-                                			<select class="form-control" name="gender">
+                                			<select class="form-control" name="gender" required>
                                         	
-                                        		<option selected disabled hidden="hidden">Sexo</option>
+                                        		<option selected disabled hidden="hidden" value="">Sexo</option>
                                             
                                             	<option value="0">Feminino</option>
                                             
@@ -157,16 +197,21 @@
                                 		</div>
 									
 										<div class="form-group">
+										
+											<div class="input-group">
                                     	
-                                    		<input type="text" class="form-control" name="rg" maxlength="12" placeholder="RG">
+                                    			<input aria-describedby="rg-addon" class="form-control" maxlength="12" name="rg" placeholder="RG" required type="text">
+                                				<span class="input-group-addon" id="rg-addon"><i class="fa fa-circle-o"></i></span>
                                                 
+                                    		</div>
+                                    	
                                     	</div>                                            
                                     
                                     	<div class="form-group">
                                     	
-                                    		<select class="form-control" name="category">
+                                    		<select class="form-control" name="category" required>
                                         
-                                        		<option selected disabled hidden="hidden">Sou um:</option>
+                                        		<option selected disabled hidden="hidden" value="">Sou um:</option>
                                             
                                             	<option value="0">Aluno do Insper</option>
                                             
@@ -180,34 +225,23 @@
                                             
                                     	<div class="form-group">
                                     	
-                                    		<input type="text" class="form-control" name="id" placeholder="Nº de Matricula/Cadastro">
+                                    		<div class="input-group">
+                                    	
+                                    			<input aria-describedby="id-addon" class="form-control" name="id" placeholder="Nº de Matrícula" required type="text">
+                                				<span class="input-group-addon" id="id-addon"><i class="fa fa-circle-o"></i></span>
                                                 
+                                    		</div>
+                                    	
                                     	</div>
                                     
                                     	<div class="form-group">
                                     	
-                                    		<button type="submit" id="bg-border-override" class="btn btn-default btn-success" style="width:100%" disabled="disabled">Próximo</button>
+                                    		<button type="submit" id="" class="btn btn-default btn-danger" style="width:100%" disabled="disabled">Próximo</button>
                                     	
                                     	</div>
                                     
                                     </div>
-                                    <!-- [END] Second section: CPF, RG, Birthday, Category[, College ID], Next -->
-                                    
-                                    <!-- [START] Third section: User Picture -->
-                                    <div class="col-md-4">
-                                    
-                                    	<div class="form-group hidden">
-                                                                                           
-                                    		<label>Insira sua foto aqui:</label>
-                                                
-                                        	<input type='file' id="imgInp" style="max-width:100%" />
-                                                
-                                        	<img id="user-profile-img" src="#" alt=" " style="max-width:100%" />     										
-                                                
-                                    	</div>
-                                    
-                                    </div>
-                                    <!-- [END] Third section: User Picture -->
+                                    <!-- [END] Second section: Gender, RG, Category, College ID, Next -->
                                     
                             	</form>
                             	
@@ -227,6 +261,9 @@
     
     <!-- User Webcam Access -->
   	<script src="js/webcam-access.js"></script>
+  	
+  	<!-- Form Masking/Validation -->
+  	<script src="js/signup-form-validation.js"></script>
   
   </body>
 

@@ -1,2 +1,2 @@
 # Dashboard
-Dashboard app for TechWeb
+Dashboard for registration and user access
